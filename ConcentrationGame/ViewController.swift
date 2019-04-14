@@ -14,13 +14,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    @IBOutlet weak var flipLabel: UILabel!
     let emojiArray = ["👻","🧛🏿‍♀️","👻","🧛🏿‍♀️"]
     @IBOutlet var cardButtons: [UIButton]!
     
+    var flipCount = 0 {
+        didSet {
+            flipLabel.text = "Flips: \(flipCount)"
+        }
+    }
+    
     @IBAction func touchCard(_ sender: UIButton) {
-        
-        let cardNumber = cardButtons.firstIndex(of: sender)
-        flipCard(withEmoji: emojiArray[cardNumber!], on: sender)
+        flipCount += 1
+        let cardNumber = cardButtons.firstIndex(of: sender)!
+        flipCard(withEmoji: emojiArray[cardNumber], on: sender)
     }
     
     func flipCard(withEmoji emoji : String, on button : UIButton){

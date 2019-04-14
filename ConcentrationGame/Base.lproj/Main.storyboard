@@ -58,11 +58,19 @@
                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8l-0M-11r"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cja-QR-txo">
+                                <rect key="frame" x="82" y="584" width="215" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="flipLabel" destination="cja-QR-txo" id="rD2-QP-5fy"/>
                         <outletCollection property="cardButtons" destination="bLS-g3-Lhj" collectionClass="NSMutableArray" id="4qc-5N-Bke"/>
                         <outletCollection property="cardButtons" destination="Cyf-hR-QZE" collectionClass="NSMutableArray" id="SLN-hm-Qhj"/>
                         <outletCollection property="cardButtons" destination="9uf-a5-Ymj" collectionClass="NSMutableArray" id="dAW-SO-Bcf"/>
