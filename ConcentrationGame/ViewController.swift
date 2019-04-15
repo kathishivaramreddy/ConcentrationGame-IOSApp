@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    var game = Concentration()
+    lazy var game = Concentration(numberOfPairCards: (cardButtons.count + 1) / 2 )
     
     @IBOutlet weak var flipLabel: UILabel!
     let emojiChoices = ["👻","🧛🏿‍♀️","👻","🧛🏿‍♀️"]
@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
+            
             flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
         }
         
