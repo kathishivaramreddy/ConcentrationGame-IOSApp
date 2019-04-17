@@ -8,51 +8,46 @@
 
 import Foundation
 
-class Concentration
-{
+struct Concentration {
+    
     private(set) var cards = [Card]()
     
-    private var indexOfOneAndOnlyFaceUpCard: Int? {
+    private var indexOfOneOnlyOneCard:Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices{
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = nil
-                    }else{
-                      return nil
-                    }
-                }
-            }
-            return foundIndex
+            let faceUpCardIndicies = cards.indices.filter{cards[$0].isFaceUp}
+            return faceUpCardIndicies.count == 1 ? faceUpCardIndicies.first : nil
         }
-        set {
-            for index in cards.indices {
+        set(newValue){
+            for index in cards.indices{
                 cards[index].isFaceUp = (index == newValue)
             }
         }
     }
     
-    func chooseCard (at index: Int) {
-        if !cards[index].isMatched {
-            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                if cards[matchIndex].identifier == cards[index].identifier {
+    mutating func chooseCard(at index:Int){
+        if !cards[index].isMatched{
+            if let matchIndex = indexOfOneOnlyOneCard, matchIndex != index {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
+                cards[index].isFaceUp = true
+                
+            }else{
+                indexOfOneOnlyOneCard = index
             }
-            cards[index].isFaceUp = true
-        }else{
-            indexOfOneAndOnlyFaceUpCard = index
         }
     }
     
-    init(numberOfPairCards: Int) {
-        for _ in 1...numberOfPairCards {
+    init(numberOfPairofCards:Int){
+        for _ in 0..<numberOfPairofCards {
             let card = Card()
-            cards += [card,card]
+            cards += [card, card]
         }
-        cards.shuffle()
+        // shuffle cards
+        for _ in 0..<numberOfPairofCards {
+            let randomIndex = Int(arc4random_uniform(UInt32(numberOfPairofCards*2)))
+            cards.append(cards.remove(at:randomIndex))
+        }
     }
-    
 }

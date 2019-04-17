@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private lazy var game = Concentration(numberOfPairCards: numberOfPairCards )
+    private lazy var game = Concentration(numberOfPairofCards: numberOfPairCards )
     
     var numberOfPairCards: Int {
         return (cardButtons.count + 1) / 2
@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
-            print(cardNumber)
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }
@@ -49,21 +48,29 @@ class ViewController: UIViewController {
         }
     }
     
-    private var emojiChoices = ["👻","🧛🏿‍♀️","🧟‍♂️","🧙🏿‍♂️","🦅","🖤","🦇","👹","☠️"]
+    private var emojiChoices = ["🦅","🧙🏿‍♂️","🦇","🧛🏿‍♀️","🖤","🦹🏿‍♂️","🧟‍♂️"]
     
-    private var emoji = [Int:String]()
+    private var emoji = Dictionary<Card,String>()
     
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
 }
 
 extension Int {
-    var arc4random: Int {
-        return Int(arc4random_uniform(UInt32(self)))
+    var arc4random:Int{
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        }
+        else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        }
+        else {
+            return 0
+        }
     }
 }
 
