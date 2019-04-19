@@ -189,7 +189,7 @@
         <scene sceneID="mPS-dD-rhs">
             <objects>
                 <viewController id="yS2-cL-e5B" customClass="ConcentrationThemeChooserViewController" customModule="ConcentrationGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IJI-mT-QOp">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="IJI-mT-QOp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -201,7 +201,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                         <state key="normal" title="Sports"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="0O2-Sb-nzb"/>
+                                            <action selector="changeTheme:" destination="yS2-cL-e5B" eventType="touchUpInside" id="axa-NL-fVk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymu-Ro-FG7">
@@ -209,7 +209,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                         <state key="normal" title="Faces"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="AA9-KV-5FB"/>
+                                            <action selector="changeTheme:" destination="yS2-cL-e5B" eventType="touchUpInside" id="ZCx-Rg-v0E"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5R-Gf-pAw">
@@ -217,7 +217,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                         <state key="normal" title="Animals"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="Hxh-z9-BiV"/>
+                                            <action selector="changeTheme:" destination="yS2-cL-e5B" eventType="touchUpInside" id="Llf-Br-EUN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -231,6 +231,9 @@
                         <viewLayoutGuide key="safeArea" id="b6B-Yk-y7P"/>
                     </view>
                     <navigationItem key="navigationItem" title="Themes" id="2Kb-1y-ACm"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="msh-fM-JlI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvd-oT-g0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -321,6 +324,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AHY-6B-5dt"/>
+        <segue reference="msh-fM-JlI"/>
     </inferredMetricsTieBreakers>
 </document>
